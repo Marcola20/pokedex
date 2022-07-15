@@ -1,19 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import { FlatList } from "react-native";
-import { Card } from '../../components/Card';
+import { Card, Pokemon, PokemonType } from '../../components/Card';
 import api from '../../service/api';
 import * as S from './styles';
-
-type PokemonType = {
-    type: string
-}
-
-type Pokemon = {
-    name: string,
-    url: string,
-    id: number,
-    types: PokemonType[]
-}
 
 type Request = {
     id: number;

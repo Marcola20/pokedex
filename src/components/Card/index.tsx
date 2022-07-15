@@ -1,15 +1,16 @@
 import React from "react";
 import { TouchableOpacityProps } from "react-native";
-import dotsImage from '../../assets/img/dots.png'
-import * as S from "./styles"
+import dotsImage from '../../assets/img/dots.png';
+import pokeball from '../../assets/img/pokeballCard.png';
+import * as S from "./styles";
 
-type PokemonType = {
+export type PokemonType = {
     type: {
         name: string
     }
 }
 
-type Pokemon = {
+export type Pokemon = {
     name: string,
     url: string,
     id: number,
@@ -30,7 +31,7 @@ export function Card({data, ... rest}: Props){
 
                 <S.PokeContentType>
                     {data.types.map(pokemonType => 
-                        <S.PokeType type={data.types[0].type.name}>
+                        <S.PokeType type={pokemonType.type.name}>
                             <S.PokeTypeText key={pokemonType.type.name}>
                                 {pokemonType.type.name}
                             </S.PokeTypeText>
@@ -38,7 +39,14 @@ export function Card({data, ... rest}: Props){
                 </S.PokeContentType>
             </S.LeftSide>
 
-            {/*<S.RightSide></S.RightSide>*/}
+            <S.RightSide>
+                <S.PokeballDetail source={pokeball} />
+                <S.PokeImage
+                    source={{
+                        uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+                    }}
+                />
+            </S.RightSide>
         </S.PokemonCard>
     )
 }
